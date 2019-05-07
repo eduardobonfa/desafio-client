@@ -1,0 +1,51 @@
+<div class="card nav-scroll">
+    <div class="content">
+
+        <h2 class="text-center">Cadastrar Pessoa</h2>
+        <app-pessoa-cadastro #pessoaCadastroComponent>
+        </app-pessoa-cadastro>
+
+        <div *ngIf="pessoaCadastroComponent.isUpdate">
+
+            <h3>Telefones</h3>
+            <app-telefone-consulta #telefoneConsultaComponent
+                (onInserirTelefone)="pessoaCadastroComponent.onInserirTelefone()"
+                (onEditarTelefone)="pessoaCadastroComponent.onEditarTelefone($event)"
+                [idPessoa]="pessoaCadastroComponent.idPessoa">
+            </app-telefone-consulta>
+
+
+            <!-- Daqui para baixo são os dialogs -->
+
+            <p-dialog [(visible)]="pessoaCadastroComponent.modalTelefoneVisible" id='idModalTelefoneVisible'
+                modal="modal" styleClass="modal-lg" [draggable]="false">
+                <p-header>
+                    <i class="zmdi zmdi-plus"></i>
+                    <h4>Cadastro de Telefone</h4>
+                </p-header>
+
+                <app-telefone-cadastro #telefoneCadastro [idTelefone]="pessoaCadastroComponent.idTelefone"
+                    [idPessoa]="pessoaCadastroComponent.idPessoa" [changed]="telefoneConsultaComponent.changed"
+                    (onClose)="pessoaCadastroComponent.onCloseTelefone()"
+                    (onSalvar)="telefoneConsultaComponent.onSalvar($event)">
+                </app-telefone-cadastro>
+            </p-dialog>
+
+            <!-- Fim dialogs -->
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="pull-right">
+            <button type="button" class="btn btn-secondary" (click)="pessoaCadastroComponent.cancelar()"
+                id="idBtnCancelarPessoa">
+                <i class="zmdi zmdi-close"></i> Voltar
+            </button>
+            <button type="button" class="btn btn-success" (click)="pessoaCadastroComponent.salvar()"
+                id="idBtnSalvarPessoa">
+                <i class="zmdi zmdi-check"></i> Salvar
+            </button>
+        </div>
+    </div>
+</div>

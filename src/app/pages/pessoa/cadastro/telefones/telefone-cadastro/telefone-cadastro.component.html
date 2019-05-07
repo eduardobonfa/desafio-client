@@ -1,0 +1,57 @@
+<div [formGroup]="form">
+
+  <div class="row">
+
+    <div class="form-group col-md-3">
+      <label for="codigoTipoTelefone">Tipo do Telefone</label>
+      <select class="form-control" id="codigoTipoTelefone" name="codigoTipoTelefone"
+        formControlName="codigoTipoTelefone" required>
+        <option value="undefined" disabled selected>Selecione o Tipo do Telefone</option>
+        <option *ngFor="let item of tiposTelefone" [value]="item.codigo">{{item.descricao}}</option>
+      </select>
+      <div class="ui-message ui-messages-error ui-corner-all"
+        *ngIf="submitted && !form.get('codigoTipoTelefone').valid">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="ddi">DDI</label>
+      <input type="text" maxlength="10" class="form-control" id="ddi" name="ddi" formControlName="ddi" required />
+      <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('ddi').valid">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="ddd">DDD</label>
+      <input type="text" maxlength="10" class="form-control" id="ddd" name="ddd" formControlName="ddd" required />
+      <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('ddd').valid">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="numeroTelefone">Número do Telefone</label>
+      <input type="text" maxlength="10" class="form-control" id="numeroTelefone" name="numeroTelefone"
+        formControlName="numeroTelefone" required />
+      <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('numeroTelefone').valid">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+      </div>
+    </div>
+
+  </div>
+
+  <p-footer>
+    <div class="pull-right">
+      <button type="button" class="btn btn-secondary" (click)="close()" id="idBtnFecharTelefone">
+        <i class="zmdi zmdi-close-circle"></i> Fechar
+      </button>
+
+      <button type="button" class="btn btn-success" (click)="salvar()" id="idBtnSalvarTelefone">
+        <i class="zmdi zmdi-shield-check"></i> Salvar
+      </button>
+    </div>
+  </p-footer>
+
+</div>

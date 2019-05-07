@@ -1,0 +1,34 @@
+<div class="text-right">
+  <a class="btn btn-sucess" id="btnNovoTelefone">
+    <button type="button" class="btn btn-success" (click)="cadastrarTelefone()">Cadastrar Telefone</button>
+  </a>
+</div>
+<br>
+<br>
+<br>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td class="col-md-3">Tipo Telefone</td>
+      <td class="col-md-3">DDI</td>
+      <td class="col-md-3">DDD</td>
+      <td class="col-md-3">Telefone</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of telefones">
+      <td>{{ getTipoTelefone(item.codigoTipoTelefone) }}</td>
+      <td>{{ item.ddi }}</td>
+      <td>{{ item.ddd }}</td>
+      <td>{{ item.numeroTelefone }}</td>
+      <td>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" (click)="editar(item)">Editar</button>
+          <button type="button" class="btn btn-danger" (click)="excluir(item)">Excluir</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

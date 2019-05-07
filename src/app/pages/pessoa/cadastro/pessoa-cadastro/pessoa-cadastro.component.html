@@ -1,0 +1,67 @@
+<div [formGroup]="form">
+  <div class="row">
+    <div class="form-group col-md-8">
+      <label for="nome">Nome</label>
+      <input type="text" maxlength="255" class="form-control" id="nome" name="nome" formControlName="nome" required />
+      <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('nome').valid">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="idade">Idade</label>
+      <input type="number" min="0" maxlength="20" class="form-control" id="idade" name="idade" formControlName="idade"
+        required />
+      <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('idade').valid">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="codigoTipoEndereco">Tipo do Endereço</label>
+      <select class="form-control" id="codigoTipoEndereco" name="codigoTipoEndereco"
+        formControlName="codigoTipoEndereco" required>
+        <option value="undefined" disabled selected>Selecione o Tipo do Endereço</option>
+        <option *ngFor="let item of tiposEndereco" [value]="item.codigo">{{item.descricao}}</option>
+      </select>
+      <div class="ui-message ui-messages-error ui-corner-all"
+        *ngIf="submitted && !form.get('codigoTipoEndereco').valid">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="cep">CEP</label>
+      <input type="text" maxlength="50" class="form-control" id="cep" name="cep" formControlName="cep" required />
+      <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('cep').valid">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="numero">Número</label>
+      <input type="text" maxlength="50" class="form-control" id="numero" name="numero" formControlName="numero"
+        required />
+      <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('numero').valid">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-12">
+      <label for="nomeEndereco">Endereço</label>
+      <input type="text" maxlength="50" class="form-control" id="nomeEndereco" name="nomeEndereco"
+        formControlName="nomeEndereco" required />
+      <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('nomeEndereco').valid">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+      </div>
+    </div>
+  </div>
+
+</div>

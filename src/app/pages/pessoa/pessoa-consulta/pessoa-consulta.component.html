@@ -1,0 +1,33 @@
+<h2 class="text-center">Pessoas</h2>
+
+<div class="text-right">
+  <a class="btn btn-sucess" id="btnNovaPessoa">
+    <button type="button" class="btn btn-success" (click)="cadastrarPessoa()">Cadastrar Pessoa</button>
+  </a>
+</div>
+<br>
+<br>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td class="col-md-6">Nome</td>
+      <td class="col-md-3">Idade</td>
+      <td class="col-md-3">Telefone</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of pessoas">
+      <td>{{ item.nome }}</td>
+      <td>{{ item.idade }}</td>
+      <td>{{ getTelefone(item) }}</td>
+      <td>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" (click)="editar(item)">Editar</button>
+          <button type="button" class="btn btn-danger" (click)="excluir(item)">Excluir</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
